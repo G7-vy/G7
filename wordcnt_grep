@@ -1,0 +1,209 @@
+***********SAFEMODE LEAVE-NEW TERMINAL***************************************
+[cloudera@localhost ~]$ gedit dell
+
+[cloudera@localhost ~]$ hadoop fs -put dell /user/cloudera
+
+[cloudera@localhost ~]$ hadoop fs -ls /user/cloudera
+Found 12 items
+drwx------   - cloudera cloudera          0 2021-11-08 10:05 /user/cloudera/.Trash
+drwx------   - cloudera cloudera          0 2021-11-11 07:31 /user/cloudera/.staging
+drwxr-xr-x   - cloudera cloudera          0 2021-11-08 10:13 /user/cloudera/ch218
+drwxr-xr-x   - cloudera cloudera          0 2020-04-21 06:00 /user/cloudera/dee
+drwxr-xr-x   - cloudera cloudera          0 2020-04-23 02:17 /user/cloudera/dee1
+drwxr-xr-x   - cloudera cloudera          0 2020-04-22 02:25 /user/cloudera/deep
+-rw-r--r--   3 cloudera cloudera         20 2021-11-14 03:16 /user/cloudera/dell
+drwxr-xr-x   - cloudera cloudera          0 2021-06-22 01:48 /user/cloudera/kavya
+drwxr-xr-x   - cloudera cloudera          0 2021-11-11 07:30 /user/cloudera/kavya118
+drwxr-xr-x   - cloudera cloudera          0 2021-06-15 03:04 /user/cloudera/labprac
+drwxr-xr-x   - cloudera cloudera          0 2020-04-16 00:26 /user/cloudera/user
+drwxr-xr-x   - cloudera cloudera          0 2020-04-16 00:06 /user/cloudera/usr
+
+[cloudera@localhost ~]$ hadoop fs -cat /user/cloudera/dell
+O/P:Contents of file.
+
+[cloudera@localhost ~]$ cd /usr/lib/hadoop-0.20-mapreduce/
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ ls
+bin          conf           hadoop-ant-2.0.0-mr1-cdh4.4.0.jar   hadoop-core.jar                         hadoop-test-2.0.0-mr1-cdh4.4.0.jar   hadoop-tools.jar  LICENSE.txt  sbin
+CHANGES.txt  contrib        hadoop-ant.jar                      hadoop-examples-2.0.0-mr1-cdh4.4.0.jar  hadoop-test.jar                      include           NOTICE.txt   webapps
+cloudera     example-confs  hadoop-core-2.0.0-mr1-cdh4.4.0.jar  hadoop-examples.jar                     hadoop-tools-2.0.0-mr1-cdh4.4.0.jar  lib               README.txt
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar
+An example program must be given as the first argument.
+Valid program names are:
+  aggregatewordcount: An Aggregate based map/reduce program that counts the words in the input files.
+  aggregatewordhist: An Aggregate based map/reduce program that computes the histogram of the words in the input files.
+  dbcount: An example job that count the pageview counts from a database.
+  grep: A map/reduce program that counts the matches of a regex in the input.
+  join: A job that effects a join over sorted, equally partitioned datasets
+  multifilewc: A job that counts words from several files.
+  pentomino: A map/reduce tile laying program to find solutions to pentomino problems.
+  pi: A map/reduce program that estimates Pi using monte-carlo method.
+  randomtextwriter: A map/reduce program that writes 10GB of random textual data per node.
+  randomwriter: A map/reduce program that writes 10GB of random data per node.
+  secondarysort: An example defining a secondary sort to the reduce.
+  sleep: A job that sleeps at each map and reduce task.
+  sort: A map/reduce program that sorts the data written by the random writer.
+  sudoku: A sudoku solver.
+  teragen: Generate data for the terasort
+  terasort: Run the terasort
+  teravalidate: Checking results of terasort
+  wordcount: A map/reduce program that counts the words in the input files.
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar wordcount /user/cloudera/dell /user/cloudera/dellop
+21/11/14 03:23:28 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+21/11/14 03:23:28 INFO input.FileInputFormat: Total input paths to process : 1
+21/11/14 03:23:29 INFO mapred.JobClient: Running job: job_202111140304_0001
+21/11/14 03:23:30 INFO mapred.JobClient:  map 0% reduce 0%
+21/11/14 03:23:39 INFO mapred.JobClient:  map 100% reduce 0%
+21/11/14 03:23:45 INFO mapred.JobClient:  map 100% reduce 100%
+21/11/14 03:23:46 INFO mapred.JobClient: Job complete: job_202111140304_0001
+21/11/14 03:23:46 INFO mapred.JobClient: Counters: 32
+21/11/14 03:23:46 INFO mapred.JobClient:   File System Counters
+21/11/14 03:23:46 INFO mapred.JobClient:     FILE: Number of bytes read=49
+21/11/14 03:23:46 INFO mapred.JobClient:     FILE: Number of bytes written=321819
+21/11/14 03:23:46 INFO mapred.JobClient:     FILE: Number of read operations=0
+21/11/14 03:23:46 INFO mapred.JobClient:     FILE: Number of large read operations=0
+21/11/14 03:23:46 INFO mapred.JobClient:     FILE: Number of write operations=0
+21/11/14 03:23:46 INFO mapred.JobClient:     HDFS: Number of bytes read=137
+21/11/14 03:23:46 INFO mapred.JobClient:     HDFS: Number of bytes written=17
+21/11/14 03:23:46 INFO mapred.JobClient:     HDFS: Number of read operations=2
+21/11/14 03:23:46 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+21/11/14 03:23:46 INFO mapred.JobClient:     HDFS: Number of write operations=1
+21/11/14 03:23:46 INFO mapred.JobClient:   Job Counters 
+21/11/14 03:23:46 INFO mapred.JobClient:     Launched map tasks=1
+21/11/14 03:23:46 INFO mapred.JobClient:     Launched reduce tasks=1
+21/11/14 03:23:46 INFO mapred.JobClient:     Data-local map tasks=1
+21/11/14 03:23:46 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=7898
+21/11/14 03:23:46 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=4116
+21/11/14 03:23:46 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+21/11/14 03:23:46 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+21/11/14 03:23:46 INFO mapred.JobClient:   Map-Reduce Framework
+21/11/14 03:23:46 INFO mapred.JobClient:     Map input records=4
+21/11/14 03:23:46 INFO mapred.JobClient:     Map output records=5
+21/11/14 03:23:46 INFO mapred.JobClient:     Map output bytes=39
+21/11/14 03:23:46 INFO mapred.JobClient:     Input split bytes=117
+21/11/14 03:23:46 INFO mapred.JobClient:     Combine input records=5
+21/11/14 03:23:46 INFO mapred.JobClient:     Combine output records=3
+21/11/14 03:23:46 INFO mapred.JobClient:     Reduce input groups=3
+21/11/14 03:23:46 INFO mapred.JobClient:     Reduce shuffle bytes=45
+21/11/14 03:23:46 INFO mapred.JobClient:     Reduce input records=3
+21/11/14 03:23:46 INFO mapred.JobClient:     Reduce output records=3
+21/11/14 03:23:46 INFO mapred.JobClient:     Spilled Records=6
+21/11/14 03:23:46 INFO mapred.JobClient:     CPU time spent (ms)=1010
+21/11/14 03:23:46 INFO mapred.JobClient:     Physical memory (bytes) snapshot=254763008
+21/11/14 03:23:46 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=1336004608
+21/11/14 03:23:46 INFO mapred.JobClient:     Total committed heap usage (bytes)=171315200
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop fs -ls /user/cloudera/dellop
+Found 3 items
+-rw-r--r--   3 cloudera cloudera          0 2021-11-14 03:23 /user/cloudera/dellop/_SUCCESS
+drwxr-xr-x   - cloudera cloudera          0 2021-11-14 03:23 /user/cloudera/dellop/_logs
+-rw-r--r--   3 cloudera cloudera         17 2021-11-14 03:23 /user/cloudera/dellop/part-r-00000
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop fs -cat /user/cloudera/dellop/part*
+hell	2
+hi	2
+so	1
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar grep /user/cloudera/dell /user/cloudera/dellop2 hi
+21/11/14 03:30:47 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+21/11/14 03:30:48 INFO mapred.FileInputFormat: Total input paths to process : 1
+21/11/14 03:30:48 INFO mapred.JobClient: Running job: job_202111140304_0002
+21/11/14 03:30:49 INFO mapred.JobClient:  map 0% reduce 0%
+21/11/14 03:31:01 INFO mapred.JobClient:  map 100% reduce 0%
+21/11/14 03:31:07 INFO mapred.JobClient:  map 100% reduce 100%
+21/11/14 03:31:08 INFO mapred.JobClient: Job complete: job_202111140304_0002
+21/11/14 03:31:08 INFO mapred.JobClient: Counters: 33
+21/11/14 03:31:08 INFO mapred.JobClient:   File System Counters
+21/11/14 03:31:08 INFO mapred.JobClient:     FILE: Number of bytes read=33
+21/11/14 03:31:08 INFO mapred.JobClient:     FILE: Number of bytes written=483026
+21/11/14 03:31:08 INFO mapred.JobClient:     FILE: Number of read operations=0
+21/11/14 03:31:08 INFO mapred.JobClient:     FILE: Number of large read operations=0
+21/11/14 03:31:08 INFO mapred.JobClient:     FILE: Number of write operations=0
+21/11/14 03:31:08 INFO mapred.JobClient:     HDFS: Number of bytes read=240
+21/11/14 03:31:08 INFO mapred.JobClient:     HDFS: Number of bytes written=105
+21/11/14 03:31:08 INFO mapred.JobClient:     HDFS: Number of read operations=5
+21/11/14 03:31:08 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+21/11/14 03:31:08 INFO mapred.JobClient:     HDFS: Number of write operations=2
+21/11/14 03:31:08 INFO mapred.JobClient:   Job Counters 
+21/11/14 03:31:08 INFO mapred.JobClient:     Launched map tasks=2
+21/11/14 03:31:08 INFO mapred.JobClient:     Launched reduce tasks=1
+21/11/14 03:31:08 INFO mapred.JobClient:     Data-local map tasks=2
+21/11/14 03:31:08 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=20574
+21/11/14 03:31:08 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=3614
+21/11/14 03:31:08 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+21/11/14 03:31:08 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+21/11/14 03:31:08 INFO mapred.JobClient:   Map-Reduce Framework
+21/11/14 03:31:08 INFO mapred.JobClient:     Map input records=4
+21/11/14 03:31:08 INFO mapred.JobClient:     Map output records=2
+21/11/14 03:31:08 INFO mapred.JobClient:     Map output bytes=22
+21/11/14 03:31:08 INFO mapred.JobClient:     Input split bytes=210
+21/11/14 03:31:08 INFO mapred.JobClient:     Combine input records=2
+21/11/14 03:31:08 INFO mapred.JobClient:     Combine output records=1
+21/11/14 03:31:08 INFO mapred.JobClient:     Reduce input groups=1
+21/11/14 03:31:08 INFO mapred.JobClient:     Reduce shuffle bytes=45
+21/11/14 03:31:08 INFO mapred.JobClient:     Reduce input records=1
+21/11/14 03:31:08 INFO mapred.JobClient:     Reduce output records=1
+21/11/14 03:31:08 INFO mapred.JobClient:     Spilled Records=2
+21/11/14 03:31:08 INFO mapred.JobClient:     CPU time spent (ms)=1920
+21/11/14 03:31:08 INFO mapred.JobClient:     Physical memory (bytes) snapshot=400453632
+21/11/14 03:31:08 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=1997475840
+21/11/14 03:31:08 INFO mapred.JobClient:     Total committed heap usage (bytes)=281878528
+21/11/14 03:31:08 INFO mapred.JobClient:   org.apache.hadoop.mapreduce.lib.input.FileInputFormatCounter
+21/11/14 03:31:08 INFO mapred.JobClient:     BYTES_READ=20
+21/11/14 03:31:08 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+21/11/14 03:31:08 INFO mapred.FileInputFormat: Total input paths to process : 1
+21/11/14 03:31:08 INFO mapred.JobClient: Running job: job_202111140304_0003
+21/11/14 03:31:09 INFO mapred.JobClient:  map 0% reduce 0%
+21/11/14 03:31:16 INFO mapred.JobClient:  map 100% reduce 0%
+21/11/14 03:31:22 INFO mapred.JobClient:  map 100% reduce 100%
+21/11/14 03:31:23 INFO mapred.JobClient: Job complete: job_202111140304_0003
+21/11/14 03:31:23 INFO mapred.JobClient: Counters: 33
+21/11/14 03:31:23 INFO mapred.JobClient:   File System Counters
+21/11/14 03:31:23 INFO mapred.JobClient:     FILE: Number of bytes read=33
+21/11/14 03:31:23 INFO mapred.JobClient:     FILE: Number of bytes written=316777
+21/11/14 03:31:23 INFO mapred.JobClient:     FILE: Number of read operations=0
+21/11/14 03:31:23 INFO mapred.JobClient:     FILE: Number of large read operations=0
+21/11/14 03:31:23 INFO mapred.JobClient:     FILE: Number of write operations=0
+21/11/14 03:31:23 INFO mapred.JobClient:     HDFS: Number of bytes read=237
+21/11/14 03:31:23 INFO mapred.JobClient:     HDFS: Number of bytes written=5
+21/11/14 03:31:23 INFO mapred.JobClient:     HDFS: Number of read operations=4
+21/11/14 03:31:23 INFO mapred.JobClient:     HDFS: Number of large read operations=0
+21/11/14 03:31:23 INFO mapred.JobClient:     HDFS: Number of write operations=2
+21/11/14 03:31:23 INFO mapred.JobClient:   Job Counters 
+21/11/14 03:31:23 INFO mapred.JobClient:     Launched map tasks=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Launched reduce tasks=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Data-local map tasks=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Total time spent by all maps in occupied slots (ms)=6360
+21/11/14 03:31:23 INFO mapred.JobClient:     Total time spent by all reduces in occupied slots (ms)=3602
+21/11/14 03:31:23 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+21/11/14 03:31:23 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+21/11/14 03:31:23 INFO mapred.JobClient:   Map-Reduce Framework
+21/11/14 03:31:23 INFO mapred.JobClient:     Map input records=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Map output records=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Map output bytes=11
+21/11/14 03:31:23 INFO mapred.JobClient:     Input split bytes=132
+21/11/14 03:31:23 INFO mapred.JobClient:     Combine input records=0
+21/11/14 03:31:23 INFO mapred.JobClient:     Combine output records=0
+21/11/14 03:31:23 INFO mapred.JobClient:     Reduce input groups=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Reduce shuffle bytes=29
+21/11/14 03:31:23 INFO mapred.JobClient:     Reduce input records=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Reduce output records=1
+21/11/14 03:31:23 INFO mapred.JobClient:     Spilled Records=2
+21/11/14 03:31:23 INFO mapred.JobClient:     CPU time spent (ms)=780
+21/11/14 03:31:23 INFO mapred.JobClient:     Physical memory (bytes) snapshot=252477440
+21/11/14 03:31:23 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=1336016896
+21/11/14 03:31:23 INFO mapred.JobClient:     Total committed heap usage (bytes)=171315200
+21/11/14 03:31:23 INFO mapred.JobClient:   org.apache.hadoop.mapreduce.lib.input.FileInputFormatCounter
+21/11/14 03:31:23 INFO mapred.JobClient:     BYTES_READ=19
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop fs -ls /user/cloudera/dellop2
+Found 3 items
+-rw-r--r--   3 cloudera cloudera          0 2021-11-14 03:31 /user/cloudera/dellop2/_SUCCESS
+drwxr-xr-x   - cloudera cloudera          0 2021-11-14 03:31 /user/cloudera/dellop2/_logs
+-rw-r--r--   3 cloudera cloudera          5 2021-11-14 03:31 /user/cloudera/dellop2/part-00000
+
+[cloudera@localhost hadoop-0.20-mapreduce]$ hadoop fs -cat /user/cloudera/dellop2/part*
+2	hi
+
