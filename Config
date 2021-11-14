@@ -1,0 +1,22 @@
+
+S1:Check hadoop in browser:
+-hdfs1,mapreduce,sqoop(good health)
+S2:Check hadoop in terminal:
+CMD:sudo jps
+-o/p check->name node,secondary name node,data node,job tracker,task tracker.
+S3:
+SAFE MODE REMOVAL
+CMD:sudo –u hdfs hdfs dfsadmin –safemode leave
+S4:
+HADOOP CONFIGURATIONS:
+To do jvm check
+CMD:cd /usr/lib/jvm
+CMD:ls
+to check Hadoop loc:
+CMD:cd /usr/lib/hadoop-0.20-mapreduce/
+CMD:ls
+O/P:jar files
+to check hadoop installation files:
+CMD:cd conf
+CMD:ls
+O/P:xml files
