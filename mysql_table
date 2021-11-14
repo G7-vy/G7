@@ -1,0 +1,51 @@
+[cloudera@localhost ~]$ sudo service mysqld start
+Starting mysqld:                                           [  OK  ]
+[cloudera@localhost ~]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.1.73 Source distribution
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+EXPERIMENT 1:
+
+mysql> create database sampledata;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db1                |
+| mysql              |
+| sampledata         |
+| sampledb           |
+| test               |
++--------------------+
+6 rows in set (0.07 sec)
+
+mysql> use sampledata;
+Database changed
+mysql> create table mentor(mno int );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table mentee(id int, name char);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into mentor values(101),(102),(103),(104),(105);
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into mentee values(10,'a'),(20,'b'),(30,'c'),(40,'d'),(50,'e');
+Query OK, 5 rows affected (0.00 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> exit
+Bye
