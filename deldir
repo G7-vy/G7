@@ -1,0 +1,2 @@
+In case to delete directory------error while importing.
+hadoop  fs  -rm  -R /user/cloudera/tableName
