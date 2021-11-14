@@ -1,0 +1,45 @@
+BASIC
+S1:Check hadoop in browser:
+-hdfs1,mapreduce,sqoop(good health)
+S2:Check hadoop in terminal:
+CMD:sudo jps
+-o/p check->name node,secondary name node,data node,job tracker,task tracker.
+S3:
+SAFE MODE REMOVAL
+CMD:sudo –u hdfs hdfs dfsadmin –safemode leave
+**************************************************************************************
+EXPERIMENT1: WORDCOUNT/GREP
+S1:
+CMD: gedit ch218
+(ch218 -new file name)
+Type the text and save
+S2:Copying from local file sys to hadoop file sys
+CMD:hadoop fs -put ch218 /user/cloudera/chnew
+(chnew is new directory name-ur file ch218 will be now placed in chnew)
+S3: OPENING MAPREDUCE PATH
+CMD:cd  /usr/lib/hadoop-0.20-mapreduce/
+CMD: ls
+o/p:many files.you copy hadoop-examples-2.0.0-mr1-cdh4.4.0.jar
+S4: NOW DO
+CMD:hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar
+(dont remember-hadoop-examples-2.0.0-mr1-cdh4.4.0.jar-u paste)
+********************************************************************************
+WORDCOUNT:
+CMD:hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar wordcount 
+/user/cloudera/chnew/ch218 /user/cloudera/chnew/output1
+To check output:
+CMD:hadoop fs -ls /user/cloudera/chnew/output1
+o/p: part-r-00000(COPY THE THIRD FILE)
+CMD:hadoop fs -cat /user/cloudera/chnew/output1/paste.
+****************************************************************************************************
+GREP:
+
+CMD:CMD:hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples-2.0.0-mr1-cdh4.4.0.jar grep
+/user/cloudera/chnew/ch218 /user/cloudera/chnew/output2 hello
+To check output:
+CMD:hadoop fs -ls /user/cloudera/chnew/output2
+o/p: part-r-00000(COPY THE THIRD FILE)
+CMD:hadoop fs -cat /user/cloudera/chnew/output2/paste.
+
+
+
