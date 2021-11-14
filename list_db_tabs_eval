@@ -1,0 +1,65 @@
+[cloudera@localhost ~]$ sqoop list-databases --connect "jdbc:mysql://localhost" 
+--username root
+
+21/10/19 06:06:43 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+information_schema
+db1
+mysql
+sampledata
+sampledb
+test
+[cloudera@localhost ~]$ sqoop list-tables --connect "jdbc:mysql://localhost/sampledata" 
+--username root
+
+21/10/19 06:07:16 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+mentee
+mentor
+[cloudera@localhost ~]$ sqoop eval --connect "jdbc:mysql://localhost/sampledata" 
+--username root --query "select *from mentee"
+
+21/10/19 06:08:48 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+-------------------
+| id          | name | 
+-------------------
+| 10          | a | 
+| 20          | b | 
+| 30          | c | 
+| 40          | d | 
+| 50          | e | 
+-------------------
+[cloudera@localhost ~]$ sqoop eval --connect "jdbc:mysql://localhost/sampledata" 
+--username root --query "select count(*) from mentor"
+
+21/10/19 06:09:31 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+------------------------
+| count(*)             | 
+------------------------
+| 5                    | 
+------------------------
+[cloudera@localhost ~]$ sqoop eval --connect "jdbc:mysql://localhost/sampledata" 
+--username root --query "select *  from mentor where mno>103"
+
+21/10/19 06:11:30 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+---------------
+| mno         | 
+---------------
+| 104         | 
+| 105         | 
+---------------
+[cloudera@localhost ~]$ sqoop eval --connect "jdbc:mysql://localhost/sampledata" 
+--username root --query "insert into mentee values(6,'f')"
+
+21/10/19 06:15:14 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+21/10/19 06:15:15 INFO tool.EvalSqlTool: 1 row(s) updated.
+[cloudera@localhost ~]$ sqoop eval --connect "jdbc:mysql://localhost/sampledata" --username root --query "select *  from mentee"
+21/10/19 06:15:34 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+-------------------
+| id          | name | 
+-------------------
+| 10          | a | 
+| 20          | b | 
+| 30          | c | 
+| 40          | d | 
+| 50          | e | 
+| 6           | f | 
+-------------------
